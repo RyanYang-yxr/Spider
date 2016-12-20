@@ -33,8 +33,8 @@ UserAgent_List = [
 ]
 URL_IP='http://www.youdaili.net/Daili/http/19733.html'#获取IP的网站
 URL_test='https://www.baidu.com/'#测试IP是否可用的的网站
-num_IP=10#准备采集多少个IP备用
-IP_test_timeout=1#测试IP时超过多少秒不响应就舍弃了
+num_IP=10#采集多少个IP备用
+IP_test_timeout=1#多少秒不响应就舍弃
 count_time=3#下载图片失败时，最多使用几次代理
 
 def IP_Test(IP,URL_test,set_timeout=IP_test_timeout):#测试IP地址是否可用,时间为3秒
@@ -65,11 +65,9 @@ def get_random_IP():#随机获取一个IP
 
 def get_image_header():#获取随机的header
 	return {'User-Agent': random.choice(UserAgent_List),
-             'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-             # 'Host': 'pics.dmm.co.jp',
+             'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",           
              'Cache-Control': 'no-cache',
-             'Upgrade-Insecure-Requests': '1',
-             # 'Referer': 'http://f3.1024xv.com/pw/htm_data/22/1611/486610.html'
+             'Upgrade-Insecure-Requests': '1',          
              }
 
 def download_single_image(image_url,proxy_flag=False,try_time=0):#首先尝试直接下载，一次不成功则尝试使用代理
